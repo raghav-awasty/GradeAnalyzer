@@ -465,8 +465,6 @@
             
             // Add percentile shading boxes if enabled
             if (state.showPercentileShading) {
-                const minScore = Math.min(...state.scores);
-                const maxScore = Math.max(...state.scores);
                 
                 const percentileRegions = [
                     { min: 90, max: 100, color: 'rgba(16, 185, 129, 0.1)', label: 'Top 10%' },
@@ -479,8 +477,8 @@
                 percentileRegions.forEach((region, i) => {
                     annotations[`percentile-box-${i}`] = {
                         type: 'box',
-                        xMin: minScore,
-                        xMax: maxScore,
+                        xMin: 0,
+                        xMax: 100,
                         yMin: region.min,
                         yMax: region.max,
                         backgroundColor: region.color,
